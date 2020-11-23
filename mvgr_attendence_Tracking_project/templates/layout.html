@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/style.css">
+
+
+ <title>{% block title %}
+{% endblock %}
+</title>
+<div id = "head">
+{% block head %}
+{% endblock %}
+
+</div>
+<style>
+body {
+  padding: 2em;
+  background: #ffffff;
+  font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+overflow: auto;
+}
+</style>
+    </head>
+   <body >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded" >
+  <div class="active">
+  <span class="navbar-text white-text"><b><h3 style="color:#ffffff" !important>MVGR  STUDENT  SUPPORT </h3></b></span> 
+  </div>
+  <ul class="navbar-nav ml-auto">
+{% block navitems %} {% endblock %}
+</ul>
+</nav>
+<nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark fixed-bottom">
+
+  <span class="navbar-text white-text">© 2019 , Vineeth Vishwa.</span> 
+  
+</nav>
+
+{% block content %}
+
+{% endblock %}
+<br>
+<br>
+    </body>
+</html>
+

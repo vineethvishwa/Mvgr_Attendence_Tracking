@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}
+DASH BOARD
+{% endblock %}
+{% block navitems %}
+   
+       <li class="nav-item">
+      <a class="nav-link" href={{ url_for('attendence_a') }}> Attendence </a>
+    </li>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href=#> Grades </a>
+    </li>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href=#> Material </a>
+    </li>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href={{ url_for('logout') }}> Logout </a>
+    </li>
+    {% endblock %}
+{%block content%}
+<br>
+<br>
+
+<div class="container mt-4">
+  <h2>IMPORT STUDENTS</h2>
+  <p>To create a  new database of students in the beginning  of academic year , when new students join the college . Choose the excel file of first attendence analysis sheet of year</p>
+  <form action="/attendence_a" method="POST" enctype="multipart/form-data">
+    <p>Choose file:</p>
+    <div class="custom-file mb-3">
+      <input type="file" class="custom-file-input" id="customFile" name="inputfile" accept=".xlsx,xls">
+      <label class="custom-file-label" for="customFile">Choose  excel file</label>
+    </div>
+    Date from which attendence started being calculated :
+    
+    
+<input type="date" name="dateofbirth" id="dateofbirth">
+    <br>
+    <br>
+    <button class="btn btn-dark" type="submit">Submit</button>
+  </form>
+</div>
+<br>
+
+<div class="container mt-3">
+  <h2>UPDATE LATEST ANALYSIS</h2>
+  <p>To update the attendence analysis the students list should be consistent with lastly imported list. Make sure UPDATING LIST IS CONSISTANT WITH THE LASTLY IMPORTED LIST. </p>
+  <form action="/attendence_a" method="POST" enctype="multipart/form-data">
+    <p>Choose file:</p>
+    <div class="custom-file mb-3">
+      <input type="file" class="custom-file-input" id="customFile" name="inputfile" accept=".xlsx ,.xls">
+      <label class="custom-file-label" for="inputfile">Choose  excel file</label>
+    </div>
+    <br>
+    <button class="btn btn-dark" type="submit">Submit</button>
+  </form>
+</div>
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+
+{% endblock %}

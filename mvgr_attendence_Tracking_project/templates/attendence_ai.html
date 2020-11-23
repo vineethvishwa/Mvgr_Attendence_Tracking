@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %}
+DASH BOARD
+{% endblock %}
+{% block head %}
+<style>
+  h3{
+  color: #ffffff ! important;
+}
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+body {
+  padding: 4em;
+  background: #e5e5e5;
+  font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+label {
+  display: block;
+}
+input {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+  width: 190px;
+}
+</style>
+{% endblock %}
+{% block navitems %}
+<li class="nav-item">
+      <a class="nav-link" style="color: #ffffff"> Hi, {{ name}} </a>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">             Attendence</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href={{ url_for('attendence_au') }}>Update</a>
+        <a class="dropdown-item" href={{ url_for('attendence_ai') }}>Import</a>
+      </div>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href=#> Grades </a>
+    </li>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href=#> Material </a>
+    </li>
+        </li>
+       <li class="nav-item">
+      <a class="nav-link" href={{ url_for('logout') }}> Logout </a>
+    </li>
+    {% endblock %}
+{%block content%}
+<br>
+<br>
+
+<div class="container mt-4">
+  <h2>IMPORT STUDENTS</h2>
+  <p>To create a  new database of students in the beginning  of academic year , when new students join the college . Choose the excel file of first attendence analysis sheet of year</p>
+  <form action="/attendence_ai" method="POST" enctype="multipart/form-data">
+    <p>Choose file:</p>
+    <div class="custom-file mb-3">
+      <input type="file" class="custom-file-input" id="customFile" name="inputfile" accept=".xlsx,xls">
+      <label class="custom-file-label" for="customFile">Choose  excel file</label>
+    </div>
+    Date from which attendence started being calculated :
+    
+    
+<input type="date" name="n" id="n">
+    <br>
+    <br>
+    <button class="btn btn-dark" type="submit">Submit</button>
+  </form>
+</div>
+<br>
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+
+{% endblock %}

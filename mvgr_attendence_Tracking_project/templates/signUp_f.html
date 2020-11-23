@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+{{title}}
+{% endblock %}
+<!--Navbar -->
+
+   {% block navitems %}
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">             Sign UP</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="dropdown-item" href={{ url_for('signup') }}>Student</a>
+        <a class="dropdown-item" href={{ url_for('signUp') }}>Faculty</a>
+      </div>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            Sign IN</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href={{ url_for('login_s') }}>Student</a>
+        <a class="dropdown-item" href={{ url_for('login_f') }}>Faculty</a>
+        <a class="dropdown-item" href={{ url_for('login_a') }}>Admin</a>
+      </div>
+    </li>
+    </li>
+       <li class="nav-item">
+      <a class="nav-link" href={{ url_for('about') }}> About </a>
+    </li>
+    {% endblock %}
+    {% block content %}
+  <div class="d-flex justify-content-center">
+<div class="col-sm-6" style="background-color:; ">
+
+      <form class="form-signin" method="POST" action="/signUp">
+        <br>
+<br>
+
+           <b><h1 style="text-align: center ! important; "> Sign Up</h1></b>
+           <br>
+<br>
+
+             {{ form.hidden_tag() }}
+        <h5> {{ wtf.form_field(form.Idno) }}</h5>
+         <h5> {{ wtf.form_field(form.username) }}</h5>
+          <h5> {{ wtf.form_field(form.email) }}</h5>
+        <h5>{{ wtf.form_field(form.password) }}</h5>
+        <h5>{{ wtf.form_field(form.code) }}</h5>
+        <h5 color=red> Add Students You Want To Monitor *</h5>
+        <br>
+        <h6>{{ wtf.form_field(form.Student_1) }}</h6>
+        <h6>{{ wtf.form_field(form.Student_2) }}</h6>
+        <h6>{{ wtf.form_field(form.Student_3) }}</h6>
+        <h6>{{ wtf.form_field(form.Student_4) }}</h6>
+        <h6>{{ wtf.form_field(form.Student_5) }}</h6>
+        <button class="btn btn-dark" type="submit">Sign Up</button>
+      </form>
+
+    </div> 
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    {% endblock %}

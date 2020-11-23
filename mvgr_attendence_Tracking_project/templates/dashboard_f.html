@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+DASH BOARD
+{% endblock %}
+{% block navitems %}
+    <li class="nav-item">
+      <a class="nav-link" style="color: #fcfcfc !important"> Hi , {{name }} </a>
+    </li>
+          <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            See</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href=#>Attendence</a>
+        <a class="dropdown-item" href={{ url_for('not_available') }}>Grades</a>
+        <a class="dropdown-item" href={{ url_for('not_available') }}>Material</a>
+      </div>
+    </li>
+
+       <li class="nav-item">
+      <a class="nav-link" href={{ url_for('logout') }}> Logout </a>
+    </li>
+    {% endblock %}
+{%block content%}
+
+<br>
+<h1>dashboard</h1>
+{% endblock %}
